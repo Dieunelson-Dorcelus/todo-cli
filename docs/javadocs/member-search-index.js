@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"cli","c":"Setup","l":"check()"},{"p":"cli","c":"CLI","l":"CLI()","url":"%3Cinit%3E()"},{"p":"cli","c":"Setup","l":"initialize()"},{"p":"cli","c":"CLI","l":"main(String[])","url":"main(java.lang.String[])"},{"p":"cli","c":"CLI","l":"ROOT_APP"},{"p":"cli","c":"Setup","l":"Setup()","url":"%3Cinit%3E()"},{"p":"cli","c":"Setup","l":"uninstall()"}]

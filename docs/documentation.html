@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
         integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
         crossorigin="anonymous" />
-    <title>todo-cli</title>
+    <title>Todo-CLI</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">todo-cli</a>
+        <a class="navbar-brand" href="#">Todo-CLI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,8 +37,35 @@
     </nav>
 
     <div class="container mt-5">
-        <h1>Documentation</h1>
-        <p>"Empty"</p>
+        <h2>User manual</h2>
+        <div class="row m-4">
+            <div class="col-4">
+              <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Manage your list</a>
+                <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Manage your task</a>
+                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Download</a>
+              </div>
+            </div>
+            <div class="col-8" style="height: 400px;background-color: gainsboro;">
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
+                <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
+                <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
+                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div class="container mt-5">
+        <h2>Documentation</h2>
+        <ul class="m-4">
+            <li>Todo-CLI Javadoc : <a href="./javadocs/index.html" target="_blank">see more</a></li>
+            <li>JAVA 14 doc : <a href="https://docs.oracle.com/en/java/javase/14/docs/api/index.html" target="_blank">see more</a></li>
+            <li>Todo-CLI Class diagram : <a href="#" target="_blank">see more</a></li>
+            <li>Design pattern : <a href="https://www.goprod.bouhours.net/?page=accueil" target="_blank">see more</a></li>
+        </ul>
     </div>
 
 
