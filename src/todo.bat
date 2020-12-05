@@ -1,2 +1,2 @@
 @echo off
-java -cp . cli/CLI %*
+java -cp %~dp0 cli/CLI %*

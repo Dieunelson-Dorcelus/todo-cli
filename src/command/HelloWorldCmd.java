@@ -13,6 +13,7 @@ public class HelloWorldCmd extends Command{
                 case "--help" -> {
                     this.help();
                 }
+                default -> this.sayHello();
             }
         }else{
             this.sayHello();
