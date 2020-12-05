@@ -1,12 +1,17 @@
 package cli;
 
+import command.Command;
+import command.HelloWorldCmd;
+
+import java.util.HashMap;
+
 /**
  *  La classe setup va mettre en place l'arboressance de l'application
  */
 public class Setup {
 
     /**
-     * Verifie que l'application est initialise
+     * Verify if the app is ready
      * @return boolean
      */
     public static boolean check(){
@@ -16,16 +21,28 @@ public class Setup {
         return true;
     }
 
+    /**
+     * Return a dictionnary of all suported command
+     * @return
+     */
+    public static HashMap<String, Command> supportedCommands(){
+
+        HashMap<String, Command> commands = new HashMap<>();
+
+        commands.put("hello", new HelloWorldCmd());
+
+        return commands;
+    }
 
     /**
-     * Initialise l'application
+     * Install app
      */
-    public static void initialize(){
+    public static void install(){
 
     }
 
     /**
-     * Desinstale l'application
+     * Uninstall app
      */
     public static void uninstall(){
 
