@@ -2,6 +2,9 @@
 With todo-cli, you can create tasks and lists in order to organize your time<br>
 Github Page : https://dieunelson.fr/todo-cli
 
+![todo_cli](./docs/diagrams/todo_cli.png)
+
+
 Credits :
   - Salayna Doukoure
   - Dieunelson Dorcelus
