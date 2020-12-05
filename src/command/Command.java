@@ -4,7 +4,7 @@ package command;
 /**
  * Command abstract class
  */
-public abstract class Command extends Thread{
+public abstract class Command {
 
     /**
      * Run command
