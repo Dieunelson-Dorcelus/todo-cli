@@ -1,3 +1,5 @@
+package repository;
+
 import parser.JSONParser;
 
 public class DataSource <T> {
