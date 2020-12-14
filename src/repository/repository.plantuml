@@ -15,6 +15,14 @@ title __REPOSITORY's Class Diagram__\n
   
 
   namespace repository {
+    class repository.DataSource {
+        + getInstance()
+        + save()
+    }
+  }
+  
+
+  namespace repository {
     interface repository.Repository {
         {abstract} + create()
         {abstract} + delete()

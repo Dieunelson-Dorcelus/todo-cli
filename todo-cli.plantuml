@@ -50,8 +50,32 @@ title __TODO-CLI's Class Diagram__\n
   }
   
 
+  namespace parser {
+    interface parser.JSONParser {
+    }
+  }
+  
+
+  namespace parser {
+    class parser.ListParser {
+    }
+  }
+  
+
+  namespace parser {
+    class parser.TaskParser {
+    }
+  }
+  
+
   namespace repository {
     class repository.Comment {
+    }
+  }
+  
+
+  namespace repository {
+    class repository.DataSource {
     }
   }
   
@@ -90,6 +114,8 @@ title __TODO-CLI's Class Diagram__\n
   cli.CLIEvent -up-|> java.awt.event.ActionEvent
   cli.CLIEventHandler .up.|> java.awt.event.ActionListener
   command.HelloWorldCmd -up-|> command.Command
+  parser.ListParser .up.|> parser.JSONParser
+  parser.TaskParser .up.|> parser.JSONParser
   repository.Task .up.|> repository.Repository
   repository.TaskList .up.|> repository.Repository
   repository.TaskListTXT -up-|> repository.TaskList
