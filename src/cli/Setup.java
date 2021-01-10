@@ -40,8 +40,9 @@ public class Setup {
         HashMap<String, Command> commands = new HashMap<>();
 
         commands.put("hello", new HelloWorldCmd());
-        commands.put("createlist", new CreateListCmd());
-        commands.put("openlist", new OpenListCmd());
+        commands.put("list", new CreateListCmd());
+        commands.put("task", new CreateTaskCmd());
+        commands.put("open", new OpenListCmd());
         commands.put("exit", new ExitCmd());
 
         return commands;

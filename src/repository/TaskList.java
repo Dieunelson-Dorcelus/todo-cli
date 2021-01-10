@@ -80,7 +80,8 @@ public class TaskList implements Repository<Task>{
      */
     @Override
     public Task create(Task item) {
-        return null;
+        this.tasks.put(item.getTitle(), item);
+        return this.tasks.get(item.getTitle());
     }
 
     /**
