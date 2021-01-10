@@ -1,14 +1,20 @@
 package cli;
 
 import command.Command;
+import command.CreateListCmd;
 import command.HelloWorldCmd;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashMap;
 
 /**
  *  La classe setup va mettre en place l'arboressance de l'application
  */
 public class Setup {
+
+    public static String[] directories = {"lists", "logs"};
 
     /**
      * Verify if the app is ready
@@ -17,6 +23,12 @@ public class Setup {
     public static boolean check(){
 
         String root = CLI.ROOT_APP;
+
+        for (String dir : Setup.directories) {
+            if (!Files.exists(Path.of(CLI.ROOT_APP + "/" + dir))){
+                return  false;
+            }
+        }
 
         return true;
     }
@@ -31,6 +43,8 @@ public class Setup {
 
         commands.put("hello", new HelloWorldCmd());
 
+        commands.put("create-list", new CreateListCmd());
+
         return commands;
     }
 
@@ -38,7 +52,13 @@ public class Setup {
      * Install app
      */
     public static void install(){
-
+        try {
+            for (String dir : Setup.directories) {
+                Files.createDirectories(Path.of(CLI.ROOT_APP + "/" + dir));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
