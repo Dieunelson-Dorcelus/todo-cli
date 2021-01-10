@@ -2,8 +2,13 @@ package cli;
 
 import command.Command;
 import repository.DataSource;
+import repository.TaskList;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Scanner;
 
 /**
  *  Interface de commande de l'application
@@ -24,6 +29,16 @@ public class CLI {
      * Active the debug mode
      */
     public static boolean DEBUG_MODE = false;
+
+    /**
+     * Locker
+     */
+    public static boolean LOCK = false;
+
+    /**
+     * Locker
+     */
+    public static TaskList SLOT;
 
     /**
      * Event manager
@@ -64,6 +79,17 @@ public class CLI {
                     }
                 }
                 cli.execute(commandLine);
+                if (cli.LOCK){
+                    Scanner sc= new Scanner(System.in);
+                    while (cli.LOCK){
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                        LocalDateTime now = LocalDateTime.now();
+                        System.out.print(dtf.format(now)+" ["+CLI.SLOT.getName()+"] # ");
+                        commandLine = sc.nextLine();
+                        cli.execute(commandLine);
+                    }
+                }
+
                 cli.stop();
             }
         }else{
@@ -122,4 +148,5 @@ public class CLI {
     public HashMap<String, Command> getCommands() {
         return commands;
     }
+
 }
