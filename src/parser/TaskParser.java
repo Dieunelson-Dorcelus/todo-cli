@@ -1,6 +1,13 @@
 package parser;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import repository.Comment;
 import repository.Task;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class TaskParser implements JSONParser<Task> {
 
@@ -12,7 +19,20 @@ public class TaskParser implements JSONParser<Task> {
 	 */
 	@Override
 	public Task getObject(String json) {
-		return null;
+		JSONObject o = new JSONObject(json);
+		String title = (String) o.get("title");
+		String description = (String) o.get("description");
+		String time = (String) o.get("created");
+		Date created = new Date(Long.parseLong(time));
+		JSONArray comments_json = (JSONArray) o.get("comments");
+
+		ArrayList<Comment> comments = new ArrayList<>();
+		CommentParser commentParser = new CommentParser();
+		for (Object comment : comments_json) {
+			comments.add(commentParser.getObject(comment.toString()));
+		}
+
+		return new Task(title, description, created, comments);
 	}
 
 	/**
@@ -23,6 +43,23 @@ public class TaskParser implements JSONParser<Task> {
 	 */
 	@Override
 	public String parse(Task object) {
-		return null;
+		StringBuilder builder = new StringBuilder();
+		builder.append("{\"title\":\""+object.getTitle()+"\",");
+		builder.append("\"description\":\""+object.getDescription()+"\",");
+		builder.append("\"created\":\""+object.getCreated().getTime()+"\",");
+
+		builder.append("\"comments\": [");
+		CommentParser commentParser = new CommentParser();
+		for (int i = 0; i < object.getComments().size(); i++){
+			Comment comment = object.getComments().get(i);
+			if (i==object.getComments().size()-1){
+				builder.append(commentParser.parse(comment));
+			}else{
+				builder.append(commentParser.parse(comment)+",");
+			}
+		}
+		builder.append("]}");
+
+		return builder.toString();
 	}
 }

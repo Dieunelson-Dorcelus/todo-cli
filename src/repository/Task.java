@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Task (Repository of comment)
  */
-public abstract class Task implements Repository<Comment>{
+public class Task implements Repository<Comment>{
 
 
     /**
@@ -20,7 +20,7 @@ public abstract class Task implements Repository<Comment>{
     /**
      * Creation date
      */
-    private Date creaded;
+    private Date created;
     /**
      * Comment list
      */
@@ -30,13 +30,13 @@ public abstract class Task implements Repository<Comment>{
      * Constructor for existing task with existing comments list
      * @param title
      * @param description
-     * @param creaded
+     * @param created
      * @param comments
      */
-    public Task(String title, String description, Date creaded, ArrayList<Comment> comments){
+    public Task(String title, String description, Date created, ArrayList<Comment> comments){
         this.title = title;
         this.description = description;
-        this.creaded = creaded;
+        this.created = created;
         this.comments = comments;
     }
 
@@ -44,10 +44,10 @@ public abstract class Task implements Repository<Comment>{
      * Constructor for existing task with no comment
      * @param title
      * @param description
-     * @param creaded
+     * @param created
      */
-    public Task(String title, String description, Date creaded){
-        this(title,description,creaded, new ArrayList<>());
+    public Task(String title, String description, Date created){
+        this(title,description,created, new ArrayList<>());
     }
 
     /**
@@ -65,10 +65,14 @@ public abstract class Task implements Repository<Comment>{
      * @return a result
      */
     @Override
-    public abstract ArrayList<Comment> readAll(Comment filter);
+    public ArrayList<Comment> readAll(Comment filter){
+        return null;
+    }
 
     @Override
-    public abstract Comment read(Comment filter);
+    public Comment read(Comment filter) {
+        return null;
+    }
 
     /**
      * Create an element
@@ -76,7 +80,9 @@ public abstract class Task implements Repository<Comment>{
      * @return the element form the DataBase
      */
     @Override
-    public abstract Comment create(Comment item);
+    public Comment create(Comment item) {
+        return null;
+    }
 
     /**
      * Update an element existing element
@@ -84,7 +90,9 @@ public abstract class Task implements Repository<Comment>{
      * @return the element form the DataBase
      */
     @Override
-    public abstract Comment update(Comment item);
+    public Comment update(Comment item) {
+        return null;
+    }
 
     /**
      * Delete an existing element
@@ -92,7 +100,9 @@ public abstract class Task implements Repository<Comment>{
      * @return the element form the DataBase
      */
     @Override
-    public abstract Comment delete(Comment item);
+    public Comment delete(Comment item) {
+        return null;
+    }
 
     /**
      * Get the task title
@@ -114,15 +124,25 @@ public abstract class Task implements Repository<Comment>{
      * Get the creation date
      * @return creation date
      */
-    public Date getCreaded() {
-        return creaded;
+    public Date getCreated() {
+        return created;
     }
 
     /**
      * Get the comment list
      * @return comments
      */
-    protected ArrayList<Comment> getComments() {
+    public ArrayList<Comment> getComments() {
         return comments;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", created=" + created +
+                ", comments=" + comments +
+                '}';
     }
 }

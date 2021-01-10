@@ -8,7 +8,7 @@ import java.util.HashMap;
 /**
  * Task list repository
  */
-public abstract class TaskList implements Repository<Task>{
+public class TaskList implements Repository<Task>{
 
 
     /**
@@ -59,7 +59,9 @@ public abstract class TaskList implements Repository<Task>{
      * @return List of result
      */
     @Override
-    public abstract ArrayList<Task> readAll(Task filter);
+    public ArrayList<Task> readAll(Task filter) {
+        return null;
+    }
 
     /**
      * Get the first element which respect the filter
@@ -67,7 +69,9 @@ public abstract class TaskList implements Repository<Task>{
      * @return a result
      */
     @Override
-    public abstract  Task read(Task filter);
+    public Task read(Task filter) {
+        return null;
+    }
 
     /**
      * Create an element
@@ -75,7 +79,9 @@ public abstract class TaskList implements Repository<Task>{
      * @return the element form the DataBase
      */
     @Override
-    public abstract  Task create(Task item);
+    public Task create(Task item) {
+        return null;
+    }
 
     /**
      * Update an element existing element
@@ -83,7 +89,9 @@ public abstract class TaskList implements Repository<Task>{
      * @return the element form the DataBase
      */
     @Override
-    public abstract  Task update(Task item);
+    public Task update(Task item) {
+        return null;
+    }
 
     /**
      * Delete an existing element
@@ -91,7 +99,9 @@ public abstract class TaskList implements Repository<Task>{
      * @return the element form the DataBase
      */
     @Override
-    public abstract  Task delete(Task item);
+    public Task delete(Task item) {
+        return null;
+    }
 
     /**
      * Get the name of the list
@@ -113,7 +123,16 @@ public abstract class TaskList implements Repository<Task>{
      * Get the task list
      * @return tasks
      */
-    protected HashMap<String, Task> getTasks() {
+    public HashMap<String, Task> getTasks() {
         return tasks;
+    }
+
+    @Override
+    public String toString() {
+        return "TaskList{" +
+                "name='" + name + '\'' +
+                ", created=" + created +
+                ", tasks=" + tasks +
+                '}';
     }
 }
