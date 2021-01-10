@@ -36,6 +36,7 @@ public class CreateListCmd extends Command{
     private void createList(String name) throws IOException {
         TaskList list = new TaskList(name);
         CLI.DATASOURCE.save(list, Path.of(CLI.ROOT_APP + "/lists/" + name + ".json"), new ListParser());
+        System.out.println(list);
     }
 
     private void showForgetNameParameterError() {
