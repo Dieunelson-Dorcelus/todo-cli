@@ -18,8 +18,8 @@ public class CommentParser implements JSONParser<Comment> {
     public Comment getObject(String json) {
         JSONObject o = new JSONObject(json);
         String content = (String) o.get("content");
-        Timestamp ts = new Timestamp((Long) o.get("created"));
-        Date created = new Date(ts.getTime());
+        String time = (String) o.get("created");
+        Date created = new Date(Long.parseLong(time));
         return new Comment(content, created);
     }
 
@@ -32,9 +32,8 @@ public class CommentParser implements JSONParser<Comment> {
     @Override
     public String parse(Comment object) {
         StringBuilder builder = new StringBuilder();
-        builder.append("{\"content\":"+object.getContent()+",");
-        Timestamp ts = new Timestamp(object.getCreated().getTime());
-        builder.append("\"created\":"+ts+"}");
+        builder.append("{\"content\":\""+object.getContent()+"\",");
+        builder.append("\"created\":\""+object.getCreated().getTime()+"\"}");
         return builder.toString();
     }
 }

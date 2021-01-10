@@ -22,4 +22,12 @@ public class Comment {
     public Date getCreated() {
         return created;
     }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "content='" + content + '\'' +
+                ", created=" + created +
+                '}';
+    }
 }
