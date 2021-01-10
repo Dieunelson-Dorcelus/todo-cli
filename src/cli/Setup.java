@@ -1,8 +1,6 @@
 package cli;
 
-import command.Command;
-import command.CreateListCmd;
-import command.HelloWorldCmd;
+import command.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -42,8 +40,9 @@ public class Setup {
         HashMap<String, Command> commands = new HashMap<>();
 
         commands.put("hello", new HelloWorldCmd());
-
-        commands.put("create-list", new CreateListCmd());
+        commands.put("createlist", new CreateListCmd());
+        commands.put("openlist", new OpenListCmd());
+        commands.put("exit", new ExitCmd());
 
         return commands;
     }
