@@ -20,7 +20,7 @@ public class CLIEventHandler implements ActionListener {
         //  Check if the event is trigger by a CLI
         if (!(e.getSource() instanceof CLI))return;
         // Check if the event exist
-        if (CLIAction.values().length<=e.getID() && e.getID()>=0)return;
+        if (CLIAction.values().length<=e.getID() || e.getID()<0)return;
 
         //  Get the CLI, the Action and the commandline
         CLI cli = (CLI) e.getSource();
