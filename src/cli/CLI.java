@@ -1,6 +1,7 @@
 package cli;
 
 import command.Command;
+import repository.DataSource;
 
 import java.util.HashMap;
 
@@ -12,7 +13,12 @@ public class CLI {
     /**
      * App location
      */
-    public static String ROOT_APP = System.getProperty("user.dir")+"/out/";
+    public static String ROOT_APP = System.getProperty("user.dir")+"/.todo";
+
+    /**
+     * Datasource
+     */
+    public static DataSource DATASOURCE = new DataSource();
 
     /**
      * Active the debug mode
@@ -62,7 +68,13 @@ public class CLI {
             }
         }else{
             CustomDebugger.print("Setup check failed !");
+            System.out.println("Installing...");
             Setup.install();
+            if (Setup.check()){
+                System.out.println("Installation : OK");
+            }else{
+                System.out.println("Installation : FAILED");
+            }
         }
     }
 
