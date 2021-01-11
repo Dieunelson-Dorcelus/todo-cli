@@ -4,7 +4,6 @@ import org.json.JSONObject;
 import repository.Comment;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 
 public class CommentParser implements JSONParser<Comment> {
 

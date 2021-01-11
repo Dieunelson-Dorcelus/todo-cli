@@ -23,6 +23,8 @@ public class CreateTaskCmd extends Command{
         Scanner sc= new Scanner(System.in);
         if (args.length==1){
             title = args[0];
+            System.out.print("Description : ");
+            description = sc.nextLine();
         } else if (args.length==2){
             title = args[0];
             description = args[1];
