@@ -43,6 +43,8 @@ public class Setup {
         commands.put("list", new CreateListCmd());
         commands.put("task", new CreateTaskCmd());
         commands.put("open", new OpenListCmd());
+        commands.put("checklist", new ListTaskCmd());
+        commands.put("tasklist", new ListTaskCmd());
         commands.put("exit", new ExitCmd());
 
         return commands;
