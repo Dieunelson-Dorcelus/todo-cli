@@ -46,6 +46,7 @@ public class Setup {
         commands.put("checklist", new ListTaskCmd());
         commands.put("tasklist", new ListTaskCmd());
         commands.put("done", new DoneTaskCmd());
+        commands.put("ongoing", new OngoingTaskCmd());
         commands.put("exit", new ExitCmd());
 
         return commands;
