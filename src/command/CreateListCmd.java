@@ -29,7 +29,7 @@ public class CreateListCmd extends Command{
                 }
             }
         }else{
-            this.showForgetNameParameterError();
+            (new ListList()).run(args);
         }
     }
 
