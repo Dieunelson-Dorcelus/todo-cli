@@ -84,7 +84,7 @@ public class CLI {
                     while (cli.LOCK){
                         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
                         LocalDateTime now = LocalDateTime.now();
-                        CLI.print(dtf.format(now)+" ["+CLI.SLOT.getName()+"] # ");
+                        CLI.print(dtf.format(now)+" ["+CLI.SLOT.getName()+"] # ", false);
                         try {
                             commandLine = sc.nextLine();
                             cli.execute(commandLine);
@@ -155,6 +155,13 @@ public class CLI {
 
     public static void print(String message){
         System.out.println(message);
+    }
+    public static void print(String message, boolean ln){
+        if (ln){
+            System.out.println(message);
+        }else{
+            System.out.print(message);
+        }
     }
 
 }
