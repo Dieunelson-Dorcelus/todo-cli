@@ -34,7 +34,7 @@ class ListParserTest {
         ArrayList<Comment> comments = new ArrayList<>();
         comments.add(comment);
         comments.add(comment);
-        Task task = new Task("The title", "The description", new Date(Long.parseLong("1610240405874")), comments);
+        Task task = new Task("The title", "The description", new Date(Long.parseLong("1610240405874")), comments, false);
         HashMap<String,Task> tasks = new HashMap<>();
         tasks.put("The title", task);
         TaskList list = new TaskList("The name", new Date(Long.parseLong("1610240405874")), tasks);

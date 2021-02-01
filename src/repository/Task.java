@@ -22,6 +22,10 @@ public class Task implements Repository<Comment>{
      */
     private Date created;
     /**
+     * It is done ?
+     */
+    private boolean done;
+    /**
      * Comment list
      */
     private ArrayList<Comment> comments;
@@ -33,11 +37,12 @@ public class Task implements Repository<Comment>{
      * @param created
      * @param comments
      */
-    public Task(String title, String description, Date created, ArrayList<Comment> comments){
+    public Task(String title, String description, Date created, ArrayList<Comment> comments, boolean done){
         this.title = title;
         this.description = description;
         this.created = created;
         this.comments = comments;
+        this.done = done;
     }
 
     /**
@@ -46,8 +51,8 @@ public class Task implements Repository<Comment>{
      * @param description
      * @param created
      */
-    public Task(String title, String description, Date created){
-        this(title,description,created, new ArrayList<>());
+    public Task(String title, String description, Date created, boolean done){
+        this(title,description,created, new ArrayList<>(), done);
     }
 
     /**
@@ -56,7 +61,7 @@ public class Task implements Repository<Comment>{
      * @param description
      */
     public Task(String title, String description){
-        this(title,description,new Date(), new ArrayList<>());
+        this(title,description,new Date(), new ArrayList<>(), false);
     }
 
     /**
@@ -142,7 +147,12 @@ public class Task implements Repository<Comment>{
                 "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", created=" + created +
+                ", done=" + done +
                 ", comments=" + comments +
                 '}';
+    }
+
+    public boolean isDone() {
+        return done;
     }
 }

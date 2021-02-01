@@ -33,7 +33,7 @@ class TaskParserTest {
         ArrayList<Comment> comments = new ArrayList<>();
         comments.add(comment);
         comments.add(comment);
-        Task task = new Task("The title", "The description", new Date(Long.parseLong("1610240405874")), comments);
+        Task task = new Task("The title", "The description", new Date(Long.parseLong("1610240405874")), comments, false);
         System.out.println(this.parser.parse(task));
     }
 }

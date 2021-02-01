@@ -22,6 +22,7 @@ public class TaskParser implements JSONParser<Task> {
 		JSONObject o = new JSONObject(json);
 		String title = (String) o.get("title");
 		String description = (String) o.get("description");
+		boolean done = (boolean) o.get("done");
 		String time = (String) o.get("created");
 		Date created = new Date(Long.parseLong(time));
 		JSONArray comments_json = (JSONArray) o.get("comments");
@@ -32,7 +33,7 @@ public class TaskParser implements JSONParser<Task> {
 			comments.add(commentParser.getObject(comment.toString()));
 		}
 
-		return new Task(title, description, created, comments);
+		return new Task(title, description, created, comments, done);
 	}
 
 	/**
@@ -47,6 +48,7 @@ public class TaskParser implements JSONParser<Task> {
 		builder.append("{\"title\":\""+object.getTitle()+"\",");
 		builder.append("\"description\":\""+object.getDescription()+"\",");
 		builder.append("\"created\":\""+object.getCreated().getTime()+"\",");
+		builder.append("\"done\":\""+object.isDone()+"\",");
 
 		builder.append("\"comments\": [");
 		CommentParser commentParser = new CommentParser();
