@@ -84,9 +84,13 @@ public class CLI {
                     while (cli.LOCK){
                         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
                         LocalDateTime now = LocalDateTime.now();
-                        System.out.print(dtf.format(now)+" ["+CLI.SLOT.getName()+"] # ");
-                        commandLine = sc.nextLine();
-                        cli.execute(commandLine);
+                        CLI.print(dtf.format(now)+" ["+CLI.SLOT.getName()+"] # ");
+                        try {
+                            commandLine = sc.nextLine();
+                            cli.execute(commandLine);
+                        }catch (Exception e){
+                            CLI.print(e.getMessage());
+                        }
                     }
                 }
 
@@ -94,12 +98,12 @@ public class CLI {
             }
         }else{
             CustomDebugger.print("Setup check failed !");
-            System.out.println("Installing...");
+            CLI.print("Installing...");
             Setup.install();
             if (Setup.check()){
-                System.out.println("Installation : OK");
+                CLI.print("Installation : OK");
             }else{
-                System.out.println("Installation : FAILED");
+                CLI.print("Installation : FAILED");
             }
         }
     }
