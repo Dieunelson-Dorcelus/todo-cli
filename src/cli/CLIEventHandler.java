@@ -41,7 +41,7 @@ public class CLIEventHandler implements ActionListener {
 
                 HashMap<String, Command> commands = cli.getCommands();
                 if (commands.containsKey(args_all[0])){
-                    commands.get(args_all[0]).run(args);
+                    commands.get(args_all[0]).execute(args);
                 }else{
                     //  Todo : throw error
                     CustomDebugger.print("This command no exist : "+args_all[0]);
