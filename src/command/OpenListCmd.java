@@ -14,7 +14,7 @@ public class OpenListCmd extends Command{
      * @param args
      */
     @Override
-    public void run(String[] args) {
+    public void run(String[] args) throws DefaultCommandException {
         if (args.length>=1){
             switch (args[0]){
                 case "--help" -> {
@@ -23,22 +23,18 @@ public class OpenListCmd extends Command{
                 default -> this.openList(args[0]);
             }
         }else{
-            this.showForgetNameParameterError();
+            throw new DefaultCommandException("Name parameter is missing !");
         }
     }
 
-    private void openList(String name) {
+    private void openList(String name) throws DefaultCommandException {
         try {
             CLI.SLOT = (TaskList) CLI.DATASOURCE.getInstance( Path.of(CLI.ROOT_APP + "/lists/" + name + ".json"), new ListParser());
             CLI.LOCK = true;
-            System.out.println("List : "+name);
+            CLI.print("List : "+name);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new DefaultCommandException(e.getMessage());
         }
-    }
-
-    private void showForgetNameParameterError() {
-        System.err.println("Name parameter is missing !");
     }
 
     /**

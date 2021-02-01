@@ -13,15 +13,15 @@ public class ExitCmd extends Command{
      * @param args
      */
     @Override
-    public void run(String[] args) {
+    public void run(String[] args) throws DefaultCommandException {
         try {
             if (CLI.SLOT!=null){
                 CLI.DATASOURCE.save(CLI.SLOT, Path.of(CLI.ROOT_APP + "/lists/" + CLI.SLOT.getName() + ".json"), new ListParser());
             }
             CLI.LOCK = false;
-            System.out.println("Bye !");
+            CLI.print("Bye !");
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new DefaultCommandException(e.getMessage());
         }
     }
 

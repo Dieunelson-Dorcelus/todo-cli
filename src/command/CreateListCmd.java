@@ -14,7 +14,7 @@ public class CreateListCmd extends Command{
      * @param args
      */
     @Override
-    public void run(String[] args) {
+    public void run(String[] args) throws DefaultCommandException {
         if (args.length>=1){
             switch (args[0]){
                 case "--help" -> {
@@ -24,7 +24,7 @@ public class CreateListCmd extends Command{
                     try {
                         this.createList(args[0]);
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        throw new DefaultCommandException(e.getMessage());
                     }
                 }
             }
@@ -37,10 +37,6 @@ public class CreateListCmd extends Command{
         TaskList list = new TaskList(name);
         CLI.DATASOURCE.save(list, Path.of(CLI.ROOT_APP + "/lists/" + name + ".json"), new ListParser());
         System.out.println(list);
-    }
-
-    private void showForgetNameParameterError() {
-        System.err.println("Name parameter is missing !");
     }
 
     /**

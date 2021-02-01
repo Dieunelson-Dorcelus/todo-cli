@@ -1,5 +1,7 @@
 package command;
 
+import cli.CLI;
+
 public class HelloWorldCmd extends Command{
 
     /**
@@ -21,7 +23,7 @@ public class HelloWorldCmd extends Command{
     }
 
     public void sayHello(){
-        System.out.println("Hello world !");
+        CLI.print("Hello world !");
     }
 
     /**
