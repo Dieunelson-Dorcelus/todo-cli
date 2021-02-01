@@ -149,4 +149,8 @@ public class CLI {
         return commands;
     }
 
+    public static void print(String message){
+        System.out.println(message);
+    }
+
 }
