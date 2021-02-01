@@ -18,7 +18,7 @@ public abstract class Command {
             run(args);
         }catch (DefaultCommandException exception){
             CLI.print(exception.getMessage());
-            CLI.LOCK = false;
+            CLI.LOCK = exception.getCliLock();
         }
     }
 
