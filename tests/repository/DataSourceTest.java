@@ -13,13 +13,13 @@ class DataSourceTest {
 
     private ListParser parser;
     private String json;
-    private DataSource<TaskList> source;
+    private DataSource source;
 
     @BeforeEach
     void setUp() {
         this.parser = new ListParser();
         this.json = "{\"name\":\"The name\",\"created\":\"1610240405874\",\"tasks\": [{\"title\":\"The title\",\"description\":\"The description\",\"created\":\"1610240405874\",\"comments\": [{\"content\":\"The Comment\",\"created\":\"1610240405874\"},{\"content\":\"The Comment\",\"created\":\"1610240405874\"}]}]}";
-        this.source = new DataSource<>();
+        this.source = new DataSource();
     }
     @Test
     void getInstance() {

@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-public class DataSource <T> {
+public class DataSource {
 
 	private static DataSource instance;
 
@@ -21,7 +21,7 @@ public class DataSource <T> {
 		return DataSource.instance;
 	}
 
-	public T getObject(Path name, JSONParser<T> parser) throws IOException {
+	public Object getObject(Path name, JSONParser parser) throws IOException {
 		List<String> content = Files.readAllLines(name, StandardCharsets.UTF_8);
 		StringBuilder builder = new StringBuilder();
 		for (String s: content) {
@@ -29,7 +29,7 @@ public class DataSource <T> {
 		}
 		return parser.getObject(builder.toString());
 	}
-	public void save(T object, Path name, JSONParser<T> parser) throws IOException {
+	public void save(Object object, Path name, JSONParser parser) throws IOException {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(String.valueOf(name)));
 		writer.write(parser.parse(object));
 		writer.close();
