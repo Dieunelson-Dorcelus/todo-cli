@@ -12,7 +12,16 @@ import java.util.List;
 
 public class DataSource <T> {
 
-	public T getInstance(Path name, JSONParser<T> parser) throws IOException {
+	private static DataSource instance;
+
+	public static DataSource getInstance(){
+		if (DataSource.instance==null){
+			DataSource.instance = new DataSource();
+		}
+		return DataSource.instance;
+	}
+
+	public T getObject(Path name, JSONParser<T> parser) throws IOException {
 		List<String> content = Files.readAllLines(name, StandardCharsets.UTF_8);
 		StringBuilder builder = new StringBuilder();
 		for (String s: content) {

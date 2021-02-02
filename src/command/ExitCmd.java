@@ -2,6 +2,7 @@ package command;
 
 import cli.CLI;
 import parser.ListParser;
+import repository.DataSource;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -16,7 +17,7 @@ public class ExitCmd extends Command{
     public void run(String[] args) throws DefaultCommandException {
         try {
             if (CLI.SLOT!=null){
-                CLI.DATASOURCE.save(CLI.SLOT, Path.of(CLI.ROOT_APP + "/lists/" + CLI.SLOT.getName() + ".json"), new ListParser());
+                DataSource.getInstance().save(CLI.SLOT, Path.of(CLI.ROOT_APP + "/lists/" + CLI.SLOT.getName() + ".json"), new ListParser());
             }
             CLI.LOCK = false;
             CLI.print("Bye !");

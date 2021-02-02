@@ -24,7 +24,7 @@ class DataSourceTest {
     @Test
     void getInstance() {
         try {
-            System.out.println(this.source.getInstance(Path.of("./testList.json"), this.parser));
+            System.out.println(this.source.getObject(Path.of("./testList.json"), this.parser));
         } catch (IOException e) {
             e.printStackTrace();
         }

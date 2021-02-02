@@ -6,7 +6,6 @@ import repository.TaskList;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -19,12 +18,6 @@ public class CLI {
      * App location
      */
     public static String ROOT_APP = System.getProperty("user.dir")+"/.todo";
-
-    /**
-     * Datasource
-     */
-    public static DataSource DATASOURCE = new DataSource();
-
     /**
      * Active the debug mode
      */

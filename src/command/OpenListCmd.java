@@ -2,6 +2,7 @@ package command;
 
 import cli.CLI;
 import parser.ListParser;
+import repository.DataSource;
 import repository.TaskList;
 
 import java.io.IOException;
@@ -29,7 +30,7 @@ public class OpenListCmd extends Command{
 
     private void openList(String name) throws DefaultCommandException {
         try {
-            CLI.SLOT = (TaskList) CLI.DATASOURCE.getInstance( Path.of(CLI.ROOT_APP + "/lists/" + name + ".json"), new ListParser());
+            CLI.SLOT = (TaskList) DataSource.getInstance().getObject( Path.of(CLI.ROOT_APP + "/lists/" + name + ".json"), new ListParser());
             CLI.LOCK = true;
             CLI.print("List : "+name);
         } catch (IOException e) {
